@@ -109,7 +109,10 @@
           // Aggiorna il contatore dei clic
           contatore.innerText = "click: " + clickCount;
         } 
-          document.addEventListener("keydown", clickCount++);
+          
+        document.addEventListener("keydown", function() {
+          clickCount++
+        });
            
       
         
