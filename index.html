@@ -133,7 +133,13 @@
 
       // Unico listener per click e tasti
       document.addEventListener("click", handleEvent);
-      document.addEventListener("keyup", handleEvent);
+      document.addEventListener("keyup", function(e) {
+        if (e.code === "Space") {
+          handleEvent(e);
+      } else {
+          e.preventDefault(); // blocca altri tasti
+      }
+    });
     }
   </script>
 
