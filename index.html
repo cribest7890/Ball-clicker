@@ -66,18 +66,21 @@
   <div class="monete">resets: 0</div>
   <div class="absreset">absolute resets: 0</div>
   <div class="license">Copyright © 2025 cribest7890</div>
-  <div id="banner-container" style="width: 320px; height: 50px"></div>
 
   <script>
-    window.onload = async function() 
-      let clickCount = parseInt(localstorage.getItem('clickCount')) || 0;
-      let coinCount = parseInt(localstorage.getItem('coinCount')) || 0;
-      let absresetCount = parseInt(localstorage.getItem('absresetCount')) || 0;
-      let pallinaSize = parseFloat(localstorage.getItem('pallinaSize')) || 50;
+    window.onload = function() {
+      const pallina = document.querySelector('.pallina');
+      const contatore = document.querySelector('.contatore');
+      const monete = document.querySelector('.monete');
+      const absreset = document.querySelector('.absreset');
+      const license = document.querySelector('.license')
+
+      let clickCount = parseInt(localStorage.getItem('clickCount')) || 0;
+      let coinCount = parseInt(localStorage.getItem('coinCount')) || 0;
+      let absresetCount = parseInt(localStorage.getItem('absresetCount')) || 0;
+      let pallinaSize = parseFloat(localStorage.getItem('pallinaSize')) || 50;
       const maxSize = Math.min(window.innerWidth, window.innerHeight);
 
-    // Prova a leggere dati da CrazyGames SDK (async)
-    
       // Aggiorna i contatori iniziali
       contatore.innerText = "click: " + clickCount;
       monete.innerText = "resets: " + coinCount;
