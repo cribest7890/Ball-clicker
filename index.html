@@ -94,16 +94,21 @@
            console.log("Banner request error", e);
        }
       
-      let clickCount = parseInt(localStorage.getItem('clickCount')) || 0;
-      let coinCount = parseInt(localStorage.getItem('coinCount')) || 0;
-      let absresetCount = parseInt(localStorage.getItem('absresetCount')) || 0;
-      let pallinaSize = parseFloat(localStorage.getItem('pallinaSize')) || 50;
+    let clickCount = parseInt(localStorage.getItem('clickCount')) || 0;
+    let coinCount = parseInt(localStorage.getItem('coinCount')) || 0;
+    let absresetCount = parseInt(localStorage.getItem('absresetCount')) || 0;
+    let pallinaSize = parseFloat(localStorage.getItem('pallinaSize')) || 50;
+    const maxSize = Math.min(window.innerWidth, window.innerHeight);
 
-// Sovrascrivi se esistono valori nel SDK
-      clickCount = parseInt(window.CrazyGames.SDK.data.getItem('clickCount')) || clickCount;
-      coinCount = parseInt(window.CrazyGames.SDK.data.getItem('coinCount')) || coinCount;
-      absresetCount = parseInt(window.CrazyGames.SDK.data.getItem('absresetCount')) || absresetCount;
-      pallinaSize = parseFloat(window.CrazyGames.SDK.data.getItem('pallinaSize')) || pallinaSize;
+    // Prova a leggere dati da CrazyGames SDK (async)
+    try {
+        clickCount = parseInt(await window.CrazyGames.SDK.data.getItem('clickCount')) || clickCount;
+        coinCount = parseInt(await window.CrazyGames.SDK.data.getItem('coinCount')) || coinCount;
+        absresetCount = parseInt(await window.CrazyGames.SDK.data.getItem('absresetCount')) || absresetCount;
+        pallinaSize = parseFloat(await window.CrazyGames.SDK.data.getItem('pallinaSize')) || pallinaSize;
+    } catch (e) {
+        console.log("Errore SDK:", e);
+    }
       
       // Aggiorna i contatori iniziali
       contatore.innerText = "click: " + clickCount;
