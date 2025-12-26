@@ -106,10 +106,10 @@
       let pallinaSize = parseFloat(localStorage.getItem('pallinaSize')) || 50;
       const maxSize = Math.min(window.innerWidth, window.innerHeight);
 
-      let clickCount = parseInt(CrazyGames.SDK.getItem('clickCount')) || 0;
-      let coinCount = parseInt(CrazyGames.SDK.getItem('coinCount')) || 0;
-      let absresetCount = parseInt(CrazyGames.SDK.getItem('absresetCount')) || 0;
-      let pallinaSize = parseFloat(CrazyGames.SDK.getItem('pallinaSize')) || 50;
+      let clickCount = parseInt(CrazyGames.getItem('clickCount')) || 0;
+      let coinCount = parseInt(CrazyGames.getItem('coinCount')) || 0;
+      let absresetCount = parseInt(CrazyGames.getItem('absresetCount')) || 0;
+      let pallinaSize = parseFloat(CrazyGames.getItem('pallinaSize')) || 50;
       
       // Aggiorna i contatori iniziali
       contatore.innerText = "click: " + clickCount;
