@@ -98,6 +98,7 @@
       let coinCount = parseInt(localstorage.getItem('coinCount')) || 0;
       let absresetCount = parseInt(localstorage.getItem('absresetCount')) || 0;
       let pallinaSize = parseFloat(localstorage.getItem('pallinaSize')) || 50;
+      const maxSize = Math.min(window.innerWidth, window.innerHeight);
 
     // Prova a leggere dati da CrazyGames SDK (async)
     
