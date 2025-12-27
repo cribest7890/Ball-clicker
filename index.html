@@ -82,6 +82,7 @@
       let coinCount = parseInt(localStorage.getItem('coinCount')) || 0;
       let absresetCount = parseInt(localStorage.getItem('absresetCount')) || 0;
       let pallinaSize = parseFloat(localStorage.getItem('pallinaSize')) || 50;
+      var clickMultiplier = 1;
       const maxSize = Math.min(window.innerWidth, window.innerHeight);
 
       // Aggiorna i contatori iniziali
@@ -96,7 +97,7 @@
 
       function handleEvent(e) {
         // Incrementa click solo al clic k
-        clickCount++;
+        clickCount =+ 1 * clickMultiplier;
 
         // Cambia colore casuale
         const colore = "#" + Math.floor(Math.random() * 16777215).toString(16);
@@ -127,6 +128,25 @@
         monete.innerText = "resets: " + coinCount;
         absreset.innerText = "absolute resets: " + absresetCount;
 
+        const shopButton = document.getElementById("shopButton");
+
+        shopButton.addEventListener("click", function (e) {
+          e.stopPropagation(); // evita che conti come click normale
+
+          if (absresetCount >= 5) {
+            absresetCount -= 5;
+            clickMultiplier += 0.1;
+    // QUI puoi mettere l'effetto dello shop
+    // esempio: bonus ai click
+    // clickMultiplier += 0.1;
+
+            absreset.innerText = "absolute resets: " + absresetCount;
+            localStorage.setItem('absresetCount', absresetCount);
+        } else {
+            alert("Non hai abbastanza absolute resets!");
+        }
+});
+        
         // Salva nello storage
         localStorage.setItem('clickCount', clickCount);
         localStorage.setItem('coinCount', coinCount);
